@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!--  Constructor injection  -->
+     <!-- <bean id="myCoach" class="com.demo.CricketCoach">   
+        collaborators and configuration for this bean go here
+        <constructor-arg ref="weather"/>
+    </bean> -->
+    
+    <!--  Setter injection  -->
+    <!-- <bean id="myCoach" class="com.demo.CricketCoach">   
+        collaborators and configuration for this bean go here
+        <constructor-arg ref="weather"/>
+        <property name="fortuneService" ref="fortune"></property>
+    </bean>
+     -->
+     
+       <bean id="stud" class="com.demo.Student">   
+        <constructor-arg index="0" value="jenifa"/>
+         <constructor-arg index="1" value="nad"/>
+          <constructor-arg index="2" value="38"/>
+    </bean> 
+    
+    <!--  prototype=(different) singleton=(same) -->
+     <bean id="myCoach" class="com.demo.CricketCoach" scope="singleton" init-method="init" destroy-method="destroy">   
+        <!-- collaborators and configuration for this bean go here -->
+        <constructor-arg ref="weather"/>
+        <property name="fortuneService" ref="fortune"></property>
+        <property name="gamesPlayed" value="10"></property>
+    </bean>
+
+     <bean id="weather" class="com.demo.WeatherService">   
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <bean id="fortune" class="com.demo.FortuneService">   
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+</beans>
